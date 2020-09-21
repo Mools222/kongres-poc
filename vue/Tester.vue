@@ -1,5 +1,10 @@
 <template>
   <div>
+    <router-link to="/foo">Go to Foo</router-link>
+    <router-link to="/bar">Go to Bar</router-link>
+    <router-link to="/oversigt">Oversigt</router-link>
+    <router-view :isLoggedIn="isLoggedIn"></router-view>
+
     <h1>Vue works</h1>
 
     <p>Nu: {{ time1 }}</p>
@@ -76,7 +81,14 @@
 <script>
 export default {
   name: "Tester",
-  props: ['nonce'],
+  props: ['nonce', 'isLoggedIn'],
+  // beforeRouteEnter (to, from, next) {
+  //   next(vm => {
+  //     console.log("Tester", "beforeRouteEnter", vm.isLoggedIn)
+  //     if (vm.isLoggedIn)
+  //       next();
+  //   })
+  // },
   data() {
     return {
       time1: '',
@@ -94,7 +106,7 @@ export default {
       newNonce: ""
     }
   },
-  created: async function () {
+  mounted: async function () {
     await this.loadClient();
     this.fetchArrangementsFromCustomAPI(); // Reads from custom API with fetch
     this.fetchArrangementsFromWordPressAPI(); // Reads from WP API with fetch
@@ -122,6 +134,7 @@ export default {
      * The promise in wp.api.loadPromise resolves when this is done
      */
     loadClient: async function () {
+      console.log("loadClient");
       let endpoint = await wp.api.loadPromise; // wp.api.loadPromise calls wp.api.init() in "wp-api.js". The wp.api.init function returns a promise that will resolve with the endpoint once it is ready.
       // console.log(endpoint);
     },
@@ -274,7 +287,8 @@ export default {
       console.log(data);
 
       if (data === "logout success")
-        window.location.reload(); // The page must be refreshed to update the nonce in wp-api.js
+        // window.location.reload(); // The page must be refreshed to update the nonce in wp-api.js
+        window.location.replace(location.pathname); // The page must be refreshed to update the nonce in wp-api.js
     },
     isLoggedInTest: async function () {
       let response = await fetch('http://localhost/kongres-poc/wp-json/custom/isloggedin', {

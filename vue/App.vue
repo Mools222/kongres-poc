@@ -1,16 +1,19 @@
 <template>
   <div>
 
-<!--    <div v-if="loadingLoginStatus">-->
-<!--      Determining logged in-->
-<!--    </div>-->
+    <div v-if="loadingLoginStatus">
+      Determining logged in
+    </div>
 
-<!--    <div v-else>-->
-<!--      <login v-if="!isLoggedIn" :nonce="nonce"></login>-->
+    <div v-else>
+      <login v-if="!isLoggedIn" :nonce="nonce"></login>
 <!--      <tester v-else :nonce="nonce"></tester>-->
-<!--    </div>-->
+      <router-view v-else :nonce="nonce" :isLoggedIn="isLoggedIn" />
+    </div>
 
-    <tester :nonce="nonce"></tester>
+<!--    <router-view :nonce="nonce" />-->
+
+<!--    <tester :nonce="nonce"></tester>-->
 
   </div>
 </template>
