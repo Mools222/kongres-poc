@@ -1,7 +1,7 @@
 <?php
 //acf_form_head();
 //$base_path = str_replace('index.php', '', $_SERVER['PHP_SELF']);
-$stylesheet_directory_uri= get_stylesheet_directory_uri();
+$stylesheet_directory_uri = get_stylesheet_directory_uri();
 ?>
 
 <!doctype html>
