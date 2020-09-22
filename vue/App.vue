@@ -1,19 +1,15 @@
 <template>
   <div>
 
-    <div v-if="loadingLoginStatus">
-      Determining logged in
-    </div>
+<!--    <div v-if="loadingLoginStatus">-->
+<!--      Determining logged in-->
+<!--    </div>-->
 
-    <div v-else>
-      <login v-if="!isLoggedIn" :nonce="nonce"></login>
-<!--      <tester v-else :nonce="nonce"></tester>-->
-      <router-view v-else :nonce="nonce" :isLoggedIn="isLoggedIn" />
-    </div>
+<!--    <div v-else>-->
+<!--      <router-view :nonce="nonce" :isLoggedIn="isLoggedIn" />-->
+<!--    </div>-->
 
-<!--    <router-view :nonce="nonce" />-->
-
-<!--    <tester :nonce="nonce"></tester>-->
+    <router-view :nonce="nonce" />
 
   </div>
 </template>
@@ -30,28 +26,11 @@ export default {
   },
   data() {
     return {
-      nonce: wpApiSettings['nonce'], // The wpApiSettings object comes from wp-api via wp_localize_script (https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/)
+      // The wpApiSettings object comes from calling "wp_enqueue_script('wp-api');" in functions. (https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/)
+      // This adds e.g. "var wpApiSettings = {"root":"http:\/\/localhost\/kongres-poc\/wp-json\/","nonce":"ee84dec9c6","versionString":"wp\/v2\/"};" to the page
+      nonce: wpApiSettings['nonce'],
       loadingLoginStatus: true,
-      isLoggedIn: "null",
     };
-  },
-  created: async function () {
-    await this.determineIsLoggedIn();
-  },
-  methods: {
-    determineIsLoggedIn: async function () {
-      let response = await fetch('http://localhost/kongres-poc/wp-json/custom/isloggedin', {
-        method: 'GET',
-        headers: {
-          'X-WP-Nonce': this.nonce
-        },
-      });
-      let data = await response.text();
-      console.log("determineIsLoggedIn", data);
-
-      this.isLoggedIn = data === "true";
-      this.loadingLoginStatus = false;
-    }
   }
 }
 </script>

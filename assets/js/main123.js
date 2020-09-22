@@ -86,6 +86,55 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "../assets/js/swScript.js":
+/*!********************************!*\
+  !*** ../assets/js/swScript.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function (event) {
+        registerServiceWorker();
+    });
+} else {
+    console.log("No serviceWorker in navigator")
+}
+
+async function registerServiceWorker() {
+    try {
+        let serviceWorkerRegistration = await navigator.serviceWorker.register(
+            vars['basePath'] + 'sw.js',
+            // {scope: vars['basePath'] + 'vue'}
+            );
+        console.log('Service worker registered.');
+        console.log("Scope", serviceWorkerRegistration.scope);
+
+        navigator.serviceWorker.addEventListener('message', function (event) {
+            const message = event.data;
+            console.log("message", message);
+            // document.getElementById('swMessage').innerText = message;
+        });
+    } catch (e) {
+        console.log('Service worker registration failed.', e);
+    }
+}
+
+function setupBeforeInstallPrompt() {
+    window.addEventListener("beforeinstallprompt", function (event) {
+        console.log("beforeinstallprompt fired", event);
+
+        // event.preventDefault(); // Prevent Chrome 67 and earlier from automatically showing the prompt
+        // beforeInstallPromptEvent = event; // Stash the event so it can be triggered later.
+        // beforeInstallPromptEventFired = true;
+        //
+        // if (location.pathname === '/')
+        //     displayInstallationIcon(); // Update UI notify the user they can install the PWA
+    });
+}
+
+/***/ }),
+
 /***/ "./App.vue":
 /*!*****************!*\
   !*** ./App.vue ***!
@@ -219,6 +268,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_template_id_a20123aa_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_template_id_a20123aa_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./Offline.vue":
+/*!*********************!*\
+  !*** ./Offline.vue ***!
+  \*********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Offline_vue_vue_type_template_id_1bfc3d25_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Offline.vue?vue&type=template&id=1bfc3d25&scoped=true& */ "./Offline.vue?vue&type=template&id=1bfc3d25&scoped=true&");
+/* harmony import */ var _Offline_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Offline.vue?vue&type=script&lang=js& */ "./Offline.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Offline_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Offline_vue_vue_type_template_id_1bfc3d25_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Offline_vue_vue_type_template_id_1bfc3d25_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "1bfc3d25",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "Offline.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./Offline.vue?vue&type=script&lang=js&":
+/*!**********************************************!*\
+  !*** ./Offline.vue?vue&type=script&lang=js& ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_index_js_vue_loader_options_Offline_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/vue-loader/lib??vue-loader-options!./Offline.vue?vue&type=script&lang=js& */ "./node_modules/vue-loader/lib/index.js?!./Offline.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_vue_loader_lib_index_js_vue_loader_options_Offline_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./Offline.vue?vue&type=template&id=1bfc3d25&scoped=true&":
+/*!****************************************************************!*\
+  !*** ./Offline.vue?vue&type=template&id=1bfc3d25&scoped=true& ***!
+  \****************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Offline_vue_vue_type_template_id_1bfc3d25_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./Offline.vue?vue&type=template&id=1bfc3d25&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./Offline.vue?vue&type=template&id=1bfc3d25&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Offline_vue_vue_type_template_id_1bfc3d25_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Offline_vue_vue_type_template_id_1bfc3d25_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -375,49 +493,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.vue */ "./App.vue");
-/* harmony import */ var _Tester_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Tester.vue */ "./Tester.vue");
-/* harmony import */ var _Overview_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Overview.vue */ "./Overview.vue");
+/* harmony import */ var _assets_js_swScript_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/js/swScript.js */ "../assets/js/swScript.js");
+/* harmony import */ var _assets_js_swScript_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_assets_js_swScript_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _router_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./router.js */ "./router.js");
 
 
 
+// import Tester from './Tester.vue'
+// import Overview from "./Overview.vue";
 
+// import Login from "./Login.vue";
 
-
-const Foo = {template: '<div>foo</div>'}
-const Bar = {template: '<div>bar</div>'}
 
 // new Vue({
 //     render: h => h(App),
 // }).$mount('#vue-div')
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
-
-const router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-    routes: [
-        {
-            path: '/',
-            component: _Tester_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-            children: [
-                {
-                    path: 'foo',
-                    component: Foo
-                },
-                {
-                    path: 'bar',
-                    component: Bar
-                },
-                {
-                    path: 'oversigt',
-                    component: _Overview_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
-                }
-            ]
-        },
-    ]
-});
+// console.log(vars);
+// console.log(vars2);
 
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     render: h => h(_App_vue__WEBPACK_IMPORTED_MODULE_2__["default"]),
-    router
+    router: _router_js__WEBPACK_IMPORTED_MODULE_4__["default"]
 }).$mount('#vue-div')
 
 /***/ }),
@@ -917,10 +1014,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 // let test = require('../../../../wp-includes/js/wp-api');
 
@@ -933,28 +1026,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data() {
     return {
-      nonce: wpApiSettings['nonce'], // The wpApiSettings object comes from wp-api via wp_localize_script (https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/)
+      // The wpApiSettings object comes from calling "wp_enqueue_script('wp-api');" in functions. (https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/)
+      // This adds e.g. "var wpApiSettings = {"root":"http:\/\/localhost\/kongres-poc\/wp-json\/","nonce":"ee84dec9c6","versionString":"wp\/v2\/"};" to the page
+      nonce: wpApiSettings['nonce'],
       loadingLoginStatus: true,
-      isLoggedIn: "null",
     };
-  },
-  created: async function () {
-    await this.determineIsLoggedIn();
-  },
-  methods: {
-    determineIsLoggedIn: async function () {
-      let response = await fetch('http://localhost/kongres-poc/wp-json/custom/isloggedin', {
-        method: 'GET',
-        headers: {
-          'X-WP-Nonce': this.nonce
-        },
-      });
-      let data = await response.text();
-      console.log("determineIsLoggedIn", data);
-
-      this.isLoggedIn = data === "true";
-      this.loadingLoginStatus = false;
-    }
   }
 });
 
@@ -1013,6 +1089,29 @@ __webpack_require__.r(__webpack_exports__);
       console.log(data);
     },
   }
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/index.js?!./Offline.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib??vue-loader-options!./Offline.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Offline"
 });
 
 
@@ -1430,21 +1529,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm.loadingLoginStatus
-      ? _c("div", [_vm._v("\n      Determining logged in\n    ")])
-      : _c(
-          "div",
-          [
-            !_vm.isLoggedIn
-              ? _c("login", { attrs: { nonce: _vm.nonce } })
-              : _c("router-view", {
-                  attrs: { nonce: _vm.nonce, isLoggedIn: _vm.isLoggedIn }
-                })
-          ],
-          1
-        )
-  ])
+  return _c("div", [_c("router-view", { attrs: { nonce: _vm.nonce } })], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -1481,6 +1566,37 @@ var render = function() {
   ])
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./Offline.vue?vue&type=template&id=1bfc3d25&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./Offline.vue?vue&type=template&id=1bfc3d25&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("h1", [_vm._v("Offline")])])
+  }
+]
 render._withStripped = true
 
 
@@ -16876,6 +16992,138 @@ try {
 
 module.exports = g;
 
+
+/***/ }),
+
+/***/ "./router.js":
+/*!*******************!*\
+  !*** ./router.js ***!
+  \*******************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _Tester_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tester.vue */ "./Tester.vue");
+/* harmony import */ var _Overview_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Overview.vue */ "./Overview.vue");
+/* harmony import */ var _Login_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Login.vue */ "./Login.vue");
+/* harmony import */ var _Offline_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Offline.vue */ "./Offline.vue");
+
+
+
+
+
+
+
+const Foo = {template: '<div>foo</div>'}
+const Bar = {template: '<div>bar</div>'}
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+async function getIsUserLoggedIn() {
+    try {
+        let response = await fetch(vars['basePath'] + 'wp-json/custom/isloggedin', {
+            method: 'GET',
+            headers: {
+                'X-WP-Nonce': wpApiSettings['nonce']
+            },
+        });
+        let data = await response.text();
+        console.log("index", "determineIsLoggedIn", data);
+
+        return data === "true";
+    } catch (e) {
+        console.log("getIsUserLoggedIn", e);
+        return false;
+    }
+}
+
+const router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+    routes: [
+        {
+            path: '/',
+            component: _Tester_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+            name: 'Index',
+            meta: {
+                requiresAuth: true
+            },
+            children: [
+                {
+                    path: 'foo',
+                    component: Foo
+                },
+                {
+                    path: 'bar',
+                    component: Bar
+                },
+                {
+                    path: 'oversigt',
+                    component: _Overview_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+                }
+            ]
+        },
+        {
+            path: '/login',
+            component: _Login_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+            name: 'Login',
+            meta: {
+                hideForAuth: true
+            }
+        },
+        {
+            path: '/offline',
+            component: _Offline_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+            name: 'Offline'
+        },
+    ]
+});
+
+let isUserLoggedInPromise = getIsUserLoggedIn();
+
+router.beforeEach(async (to, from, next) => {
+    if (!navigator.onLine) {
+        if (to.name !== 'Offline') {
+            console.log("0.1");
+            return next({path: '/offline'});
+        } else {
+            console.log("0.2");
+            return next();
+        }
+    }
+
+    let isUserLoggedIn = await isUserLoggedInPromise;
+
+    // isUserLoggedInPromise.then((isUserLoggedIn) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (isUserLoggedIn) {
+            console.log("1.1");
+            next();
+        } else {
+            console.log("1.2");
+            next({path: '/login'});
+        }
+    } else if (to.matched.some(record => record.meta.hideForAuth)) {
+        if (isUserLoggedIn) {
+            console.log("2.1");
+            next({path: '/'});
+        } else {
+            console.log("2.2");
+            next();
+        }
+    } else if (to.name === 'Offline') { // If we are in this if/else block, we know we're online, so redirect to the front page
+        console.log("3");
+        next({path: '/'});
+    } else {
+        console.log("4");
+        next();
+    }
+    // });
+});
+
+/* harmony default export */ __webpack_exports__["default"] = (router);
 
 /***/ })
 

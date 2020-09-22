@@ -1,0 +1,1 @@
+These files must be placed in the root of the WordPress installation (i.e. on the same level as wp-admin, wp-content & wp-includes)

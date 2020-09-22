@@ -6,18 +6,12 @@
 
 get_header();
 
-//if (is_user_logged_in()) {
     ?>
+
+    <noscript>Slå venligst JavaScript til.</noscript>
 
     <div id="vue-div"></div>
 
     <?php
-//} else {
-//    ?>
-<!---->
-<!--    <h1>Log ind</h1>-->
-<!---->
-<!--    --><?php
-//}
 
 get_footer();

@@ -1,40 +1,18 @@
 import Vue from 'vue'
 import VueRouter from "vue-router";
 import App from './App.vue'
-import Tester from './Tester.vue'
-import Overview from "./Overview.vue";
-
-const Foo = {template: '<div>foo</div>'}
-const Bar = {template: '<div>bar</div>'}
+// import Tester from './Tester.vue'
+// import Overview from "./Overview.vue";
+import '../assets/js/swScript.js';
+// import Login from "./Login.vue";
+import router from "./router.js";
 
 // new Vue({
 //     render: h => h(App),
 // }).$mount('#vue-div')
 
-Vue.use(VueRouter);
-
-const router = new VueRouter({
-    routes: [
-        {
-            path: '/',
-            component: Tester,
-            children: [
-                {
-                    path: 'foo',
-                    component: Foo
-                },
-                {
-                    path: 'bar',
-                    component: Bar
-                },
-                {
-                    path: 'oversigt',
-                    component: Overview
-                }
-            ]
-        },
-    ]
-});
+// console.log(vars);
+// console.log(vars2);
 
 new Vue({
     render: h => h(App),

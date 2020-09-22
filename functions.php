@@ -10,9 +10,21 @@ function kongres_scripts() {
 //    var_dump($t);
 
     if (is_page_template('page-vue.php')) {
+//        enqueue_service_worker_scripts();
         activate_wp_api_plugin();
-        vue_scripts();
+        enqueue_vue_scripts();
     }
+}
+
+/**
+ * Load the service worker script
+ */
+function enqueue_service_worker_scripts() {
+    wp_enqueue_script('swScript', get_template_directory_uri() . '/assets/js/swScript.js', array(), null, false);
+
+    $base_path = str_replace('index.php', '', $_SERVER['PHP_SELF']);
+    wp_localize_script('swScript', 'vars', array('basePath' => $base_path));
+//    wp_add_inline_script('swScript', "let vars2 = {basePath: " . json_encode($base_path) . "};", 'before');
 }
 
 /**
@@ -25,12 +37,15 @@ function activate_wp_api_plugin() {
 /**
  * Load compiled Vue JS (which includes both the code to make Vue work and my own components)
  */
-function vue_scripts() {
+function enqueue_vue_scripts() {
     // [Not necessary, since Vue is compiled with main123.js - See index.js]
 //    wp_enqueue_script('vue', get_template_directory_uri() . '/assets/js/vue.js', null, null, true); // change to vue.min.js for production
 //    wp_enqueue_script('main', get_template_directory_uri() . '/assets/js/main123.js', array('vue'), null, true);
 
     wp_enqueue_script('main', get_template_directory_uri() . '/assets/js/main123.js', array(), null, true);
+
+    $base_path = str_replace('index.php', '', $_SERVER['PHP_SELF']);
+    wp_localize_script('main', 'vars', array('basePath' => $base_path));
 }
 
 /**
