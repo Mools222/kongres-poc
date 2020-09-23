@@ -1057,10 +1057,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
   props: ['nonce'],
+  data() {
+    return {
+      username: 'holder100',
+      password: 'Holder100',
+    }
+  },
   methods: {
     loginTest: async function () {
       // let d = {"user_login": "admin", "user_password": "admin"};
@@ -1555,6 +1565,48 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("h1", [_vm._v("Login")]),
+    _vm._v(" "),
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.username,
+          expression: "username"
+        }
+      ],
+      attrs: { type: "text" },
+      domProps: { value: _vm.username },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.username = $event.target.value
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.password,
+          expression: "password"
+        }
+      ],
+      attrs: { type: "text" },
+      domProps: { value: _vm.password },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.password = $event.target.value
+        }
+      }
+    }),
     _vm._v(" "),
     _c("button", { on: { click: _vm.loginTest } }, [_vm._v("Login")]),
     _vm._v(" "),
@@ -17081,7 +17133,7 @@ const router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     ]
 });
 
-let isUserLoggedInPromise = getIsUserLoggedIn();
+// let isUserLoggedInPromise = getIsUserLoggedIn();
 
 router.beforeEach(async (to, from, next) => {
     if (!navigator.onLine) {
@@ -17094,7 +17146,8 @@ router.beforeEach(async (to, from, next) => {
         }
     }
 
-    let isUserLoggedIn = await isUserLoggedInPromise;
+    // let isUserLoggedIn = await isUserLoggedInPromise;
+    let isUserLoggedIn = vars.isUserLoggedIn === "true";
 
     // isUserLoggedInPromise.then((isUserLoggedIn) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {

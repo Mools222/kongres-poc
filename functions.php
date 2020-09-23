@@ -24,7 +24,7 @@ function enqueue_service_worker_scripts() {
 
     $base_path = str_replace('index.php', '', $_SERVER['PHP_SELF']);
     wp_localize_script('swScript', 'vars', array('basePath' => $base_path));
-//    wp_add_inline_script('swScript', "let vars2 = {basePath: " . json_encode($base_path) . "};", 'before');
+//    wp_add_inline_script('swScript', "let vars2 = {basePath: " . json_encode($base_path) . "};", 'before'); // https://digwp.com/2019/07/better-inline-script/
 }
 
 /**
@@ -45,7 +45,8 @@ function enqueue_vue_scripts() {
     wp_enqueue_script('main', get_template_directory_uri() . '/assets/js/main123.js', array(), null, true);
 
     $base_path = str_replace('index.php', '', $_SERVER['PHP_SELF']);
-    wp_localize_script('main', 'vars', array('basePath' => $base_path));
+    $is_user_logged_in = is_user_logged_in();
+    wp_localize_script('main', 'vars', array('basePath' => $base_path, 'isUserLoggedIn' => json_encode($is_user_logged_in)));
 }
 
 /**
@@ -127,7 +128,7 @@ function logout_via_api($request) {
 function is_logged_in($request) {
 //    $is_ajax_call = (defined('DOING_AJAX') && DOING_AJAX);
 //    $is_doing_ajax = wp_doing_ajax();
-    $t = is_user_logged_in();
+//    $t = is_user_logged_in();
 //    $params = $request->get_params();
 //    $headers = $request->get_headers();
 //    $t1 = wp_verify_nonce( $headers['x_wp_nonce'][0] );

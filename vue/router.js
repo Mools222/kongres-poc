@@ -68,7 +68,7 @@ const router = new VueRouter({
     ]
 });
 
-let isUserLoggedInPromise = getIsUserLoggedIn();
+// let isUserLoggedInPromise = getIsUserLoggedIn();
 
 router.beforeEach(async (to, from, next) => {
     if (!navigator.onLine) {
@@ -81,7 +81,8 @@ router.beforeEach(async (to, from, next) => {
         }
     }
 
-    let isUserLoggedIn = await isUserLoggedInPromise;
+    // let isUserLoggedIn = await isUserLoggedInPromise;
+    let isUserLoggedIn = vars.isUserLoggedIn === "true";
 
     // isUserLoggedInPromise.then((isUserLoggedIn) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {

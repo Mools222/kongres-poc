@@ -64,7 +64,10 @@ async function updateCachedFiles() {
 self.addEventListener('fetch', function (event) {
     // console.log('Fetch event ' + event.request.url);
 
-    let regex = /\./; // Only match files, i.e. URLs containing a . (e.g. http://localhost/kongres-poc/wp-content/themes/kongres/assets/js/swScript.js)
+    // Only match files, i.e. URLs containing a . (e.g. http://localhost/kongres-poc/wp-content/themes/kongres/assets/js/swScript.js)
+    // We normally can't match the front page (e.g. http://localhost/kongres-poc/), since the nonce (which is placed in the HTML by "wp_enqueue_script('wp-api');" (which calls (wp_localize_script)) must be updated with every refresh
+    // However, if the user is offline, the front page can be matched (since the nonce doesn't matter in this case)
+    let regex = /\./;
     if (regex.test(event.request.url) || !navigator.onLine)
         event.respondWith(getResponse(event));
 

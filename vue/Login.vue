@@ -2,6 +2,10 @@
   <div>
     <h1>Login</h1>
 
+    <input type="text" v-model="username">
+    <input type="text" v-model="password">
+
+
     <button @click="loginTest">Login</button>
     <button @click="isLoggedInTest">Is logged in</button>
     <p></p>
@@ -13,6 +17,12 @@
 export default {
   name: "Login",
   props: ['nonce'],
+  data() {
+    return {
+      username: 'holder100',
+      password: 'Holder100',
+    }
+  },
   methods: {
     loginTest: async function () {
       // let d = {"user_login": "admin", "user_password": "admin"};
