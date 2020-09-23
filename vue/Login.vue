@@ -10,6 +10,9 @@
     <button @click="isLoggedInTest">Is logged in</button>
     <p></p>
 
+    <button @click="testStore">Store</button>
+
+
   </div>
 </template>
 
@@ -50,6 +53,11 @@ export default {
       let data = await response.text();
       console.log(data);
     },
+    testStore: function () {
+      this.$store.dispatch('setCount', 5);
+      let count = this.$store.getters.getCount;
+      console.log("testStore", count);
+    }
   }
 }
 </script>

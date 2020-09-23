@@ -28,44 +28,46 @@ async function getIsUserLoggedIn() {
     }
 }
 
-const router = new VueRouter({
-    routes: [
-        {
-            path: '/',
-            component: Tester,
-            name: 'Index',
-            meta: {
-                requiresAuth: true
+const routes = [
+    {
+        path: '/',
+        component: Tester,
+        name: 'Index',
+        meta: {
+            requiresAuth: true
+        },
+        children: [
+            {
+                path: 'foo',
+                component: Foo
             },
-            children: [
-                {
-                    path: 'foo',
-                    component: Foo
-                },
-                {
-                    path: 'bar',
-                    component: Bar
-                },
-                {
-                    path: 'oversigt',
-                    component: Overview
-                }
-            ]
-        },
-        {
-            path: '/login',
-            component: Login,
-            name: 'Login',
-            meta: {
-                hideForAuth: true
+            {
+                path: 'bar',
+                component: Bar
+            },
+            {
+                path: 'oversigt',
+                component: Overview
             }
-        },
-        {
-            path: '/offline',
-            component: Offline,
-            name: 'Offline'
-        },
-    ]
+        ]
+    },
+    {
+        path: '/login',
+        component: Login,
+        name: 'Login',
+        meta: {
+            hideForAuth: true
+        }
+    },
+    {
+        path: '/offline',
+        component: Offline,
+        name: 'Offline'
+    },
+];
+
+const router = new VueRouter({
+    routes
 });
 
 // let isUserLoggedInPromise = getIsUserLoggedIn();
@@ -82,7 +84,7 @@ router.beforeEach(async (to, from, next) => {
     }
 
     // let isUserLoggedIn = await isUserLoggedInPromise;
-    let isUserLoggedIn = vars.isUserLoggedIn === "true";
+    let isUserLoggedIn = customVars.isUserLoggedIn === "true"; // The customVars object is set by "wp_localize_script()" in "functions.php". What "wp_localize_script()" does is add the variable to the HTML page
 
     // isUserLoggedInPromise.then((isUserLoggedIn) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {

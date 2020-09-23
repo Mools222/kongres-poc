@@ -46,7 +46,7 @@ function enqueue_vue_scripts() {
 
     $base_path = str_replace('index.php', '', $_SERVER['PHP_SELF']);
     $is_user_logged_in = is_user_logged_in();
-    wp_localize_script('main', 'vars', array('basePath' => $base_path, 'isUserLoggedIn' => json_encode($is_user_logged_in)));
+    wp_localize_script('main', 'customVars', array('basePath' => $base_path, 'isUserLoggedIn' => json_encode($is_user_logged_in)));
 }
 
 /**
