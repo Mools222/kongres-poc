@@ -5,7 +5,6 @@
     <input type="text" v-model="username">
     <input type="text" v-model="password">
 
-
     <button @click="loginTest">Login</button>
     <button @click="isLoggedInTest">Is logged in</button>
     <p></p>
@@ -29,8 +28,8 @@ export default {
   methods: {
     loginTest: async function () {
       // let d = {"user_login": "admin", "user_password": "admin"};
-      let d = {"user_login": "holder100", "user_password": "Holder100"};
-      let response = await fetch('http://localhost/kongres-poc/wp-json/custom/login', {
+      let d = {"user_login": this.username, "user_password": this.password};
+      let response = await fetch(customVars.baseUrl + '/wp-json/custom/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -44,7 +43,7 @@ export default {
         window.location.reload(); // The page must be refreshed to update the nonce in wp-api.js
     },
     isLoggedInTest: async function () {
-      let response = await fetch('http://localhost/kongres-poc/wp-json/custom/isloggedin', {
+      let response = await fetch(customVars.baseUrl + '/wp-json/custom/isloggedin', {
         method: 'GET',
         headers: {
           'X-WP-Nonce': this.nonce // is_user_logged_in() only seems to work properly when the nonce is provided

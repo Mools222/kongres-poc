@@ -10,7 +10,7 @@ function kongres_scripts() {
 //    var_dump($t);
 
     if (is_page_template('page-vue.php')) {
-//        enqueue_service_worker_scripts();
+//        enqueue_service_worker_scripts(); // This is imported in index.js
         activate_wp_api_plugin();
         enqueue_vue_scripts();
     }
@@ -22,8 +22,8 @@ function kongres_scripts() {
 function enqueue_service_worker_scripts() {
     wp_enqueue_script('swScript', get_template_directory_uri() . '/assets/js/swScript.js', array(), null, false);
 
-    $base_path = str_replace('index.php', '', $_SERVER['PHP_SELF']);
-    wp_localize_script('swScript', 'vars', array('basePath' => $base_path));
+//    $base_path = str_replace('index.php', '', $_SERVER['PHP_SELF']);
+//    wp_localize_script('swScript', 'vars', array('basePath' => $base_path));
 //    wp_add_inline_script('swScript', "let vars2 = {basePath: " . json_encode($base_path) . "};", 'before'); // https://digwp.com/2019/07/better-inline-script/
 }
 
@@ -44,9 +44,14 @@ function enqueue_vue_scripts() {
 
     wp_enqueue_script('main', get_template_directory_uri() . '/assets/js/main123.js', array(), null, true);
 
+//    $t = get_permalink();
+//    $t2 = get_home_url();
+//    $t3 = get_site_url();
+
+    $base_url = get_site_url();
     $base_path = str_replace('index.php', '', $_SERVER['PHP_SELF']);
     $is_user_logged_in = is_user_logged_in();
-    wp_localize_script('main', 'customVars', array('basePath' => $base_path, 'isUserLoggedIn' => json_encode($is_user_logged_in)));
+    wp_localize_script('main', 'customVars', array('baseUrl' => $base_url, 'basePath' => $base_path, 'isUserLoggedIn' => json_encode($is_user_logged_in)));
 }
 
 /**
@@ -75,14 +80,34 @@ function arrangement_update_acf($post, $request, $true) {
         update_field('arrangement_name', $arrangement_name, $arrangement_id);
     }
 
-    if (isset($params['arrangement_date'])) {
-        $date = $params['arrangement_date'];
+    if (isset($params['arrangement_start_date'])) {
+        $date = $params['arrangement_start_date'];
         $arrangement_date = date("Ymd", $date);
-        update_field('arrangement_date', $arrangement_date, $arrangement_id);
+        update_field('arrangement_start_date', $arrangement_date, $arrangement_id);
     }
 }
 
-add_action('rest_api_init', 'register_custom_api_routes');
+add_action('rest_api_init', 'prepare_api');
+function prepare_api($wp_rest_server) {
+//    protect_api_from_unauthorized_users();
+    register_custom_api_routes();
+}
+
+/**
+ * Block users who are not logged in from accessing WP's REST API
+ */
+function protect_api_from_unauthorized_users() {
+    $is_login_route = preg_match('/wp-json\/custom\/login$/', $_SERVER['REQUEST_URI']);
+    if (!is_user_logged_in() && !$is_login_route) {
+        echo 'Du er ikke logget ind.';
+        status_header(403);
+        die();
+    }
+}
+
+/**
+ * Register custom routes for WP's REST API
+ */
 function register_custom_api_routes() {
     register_rest_route('custom', '/login', array('methods' => 'POST', 'callback' => 'login_via_api'));
     register_rest_route('custom', '/logout', array('methods' => 'GET', 'callback' => 'logout_via_api'));
@@ -147,7 +172,7 @@ function block_wp_admin() {
 
     if ($is_admin_page && !$is_admin_user && !$is_ajax_call) {
         wp_safe_redirect(home_url());
-        exit;
+        die();
     }
 }
 

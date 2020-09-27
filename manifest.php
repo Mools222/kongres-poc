@@ -1,14 +1,12 @@
 <?php
 header('Content-Type: application/json');
 
-//$base_path = str_replace('index.php', '', $_SERVER['PHP_SELF']);
-
 $matches = [];
 preg_match('/(.+)wp-content/', $_SERVER['PHP_SELF'], $matches);
 $base_path = $matches[1];
 
 $manifest = array (
-    'name' => 'JCI Kongres',
+    'name' => 'JCI Kongres App',
     'short_name' => 'JCI Kongres',
     'icons' =>
         array (

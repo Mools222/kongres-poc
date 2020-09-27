@@ -41,7 +41,7 @@
     <hr>
 
     <button @click="createArrangementOld">Create arrangement (fetch)</button>
-    <p>Reponse: {{ getCreationResponse }}</p>
+    <p>Reponse: {{ creationResponseOld }}</p>
 
     <hr>
 
@@ -149,7 +149,7 @@ export default {
       this.isLoading = true;
       let startLoadingTime = new Date();
 
-      let response = await fetch('http://localhost/kongres-poc/api/');
+      let response = await fetch(customVars.baseUrl + '/api/');
       let data = await response.json();
       this.arrangements_CustomAPI_fetch = data;
 
@@ -162,7 +162,7 @@ export default {
       this.isLoading2 = true;
       let startLoadingTime = new Date();
 
-      let response = await fetch('http://localhost/kongres-poc/wp-json/wp/v2/arrangement');
+      let response = await fetch(customVars.baseUrl + '/wp-json/wp/v2/arrangement');
       let data = await response.json();
       this.arrangements_WPAPI_fetch = data;
 
@@ -179,11 +179,11 @@ export default {
         arrangement_start_date: Math.floor(Date.now() / 1000),
       };
 
-      let response = await fetch('http://localhost/kongres-poc/wp-json/wp/v2/arrangement', {
+      let response = await fetch(customVars.baseUrl + '/wp-json/wp/v2/arrangement', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-WP-Nonce': this.newNonce
+          'X-WP-Nonce': this.nonce
         },
         body: JSON.stringify(attributes) // body data type must match "Content-Type" header
       });
@@ -266,7 +266,7 @@ export default {
     loginTest: async function () {
       // let d = {"user_login": "admin", "user_password": "admin"};
       let d = {"user_login": "holder100", "user_password": "Holder100"};
-      let response = await fetch('http://localhost/kongres-poc/wp-json/custom/login', {
+      let response = await fetch(customVars.baseUrl + '/wp-json/custom/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -282,7 +282,7 @@ export default {
       // console.log("new nonce", wpApiSettings['nonce']);
     },
     logoutTest: async function () {
-      let response = await fetch('http://localhost/kongres-poc/wp-json/custom/logout');
+      let response = await fetch(customVars.baseUrl + '/wp-json/custom/logout');
       let data = await response.text();
       console.log(data);
 
@@ -291,7 +291,7 @@ export default {
         window.location.replace(location.pathname); // The page must be refreshed to update the nonce in wp-api.js
     },
     isLoggedInTest: async function () {
-      let response = await fetch('http://localhost/kongres-poc/wp-json/custom/isloggedin', {
+      let response = await fetch(customVars.baseUrl + '/wp-json/custom/isloggedin', {
         method: 'GET',
         headers: {
           'X-WP-Nonce': this.nonce
@@ -304,7 +304,7 @@ export default {
       // wpApiSettings['nonce'] = this.nonce;
       // wpApiSettings['nonce'] = "asd";
 
-      let response = await fetch('http://localhost/kongres-poc/wp-json/custom/getnonce');
+      let response = await fetch(customVars.baseUrl + '/wp-json/custom/getnonce');
       let data = await response.text();
       console.log("setNonce", data);
       this.newNonce = data;

@@ -1,6 +1,7 @@
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function (event) {
         registerServiceWorker();
+        setupBeforeInstallPrompt();
     });
 } else {
     console.log("No serviceWorker in navigator")
@@ -9,8 +10,8 @@ if ('serviceWorker' in navigator) {
 async function registerServiceWorker() {
     try {
         let serviceWorkerRegistration = await navigator.serviceWorker.register(
-            vars['basePath'] + 'sw.js',
-            // {scope: vars['basePath'] + 'vue'}
+            customVars['basePath'] + 'sw.js',
+            // {scope: customVars['basePath'] + 'vue'}
             );
         console.log('Service worker registered.');
         console.log("Scope", serviceWorkerRegistration.scope);

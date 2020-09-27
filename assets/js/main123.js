@@ -96,6 +96,7 @@
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function (event) {
         registerServiceWorker();
+        setupBeforeInstallPrompt();
     });
 } else {
     console.log("No serviceWorker in navigator")
@@ -104,8 +105,8 @@ if ('serviceWorker' in navigator) {
 async function registerServiceWorker() {
     try {
         let serviceWorkerRegistration = await navigator.serviceWorker.register(
-            vars['basePath'] + 'sw.js',
-            // {scope: vars['basePath'] + 'vue'}
+            customVars['basePath'] + 'sw.js',
+            // {scope: customVars['basePath'] + 'vue'}
             );
         console.log('Service worker registered.');
         console.log("Scope", serviceWorkerRegistration.scope);
@@ -1054,7 +1055,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
@@ -1068,8 +1068,8 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     loginTest: async function () {
       // let d = {"user_login": "admin", "user_password": "admin"};
-      let d = {"user_login": "holder100", "user_password": "Holder100"};
-      let response = await fetch('http://localhost/kongres-poc/wp-json/custom/login', {
+      let d = {"user_login": this.username, "user_password": this.password};
+      let response = await fetch(customVars.baseUrl + '/wp-json/custom/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -1083,7 +1083,7 @@ __webpack_require__.r(__webpack_exports__);
         window.location.reload(); // The page must be refreshed to update the nonce in wp-api.js
     },
     isLoggedInTest: async function () {
-      let response = await fetch('http://localhost/kongres-poc/wp-json/custom/isloggedin', {
+      let response = await fetch(customVars.baseUrl + '/wp-json/custom/isloggedin', {
         method: 'GET',
         headers: {
           'X-WP-Nonce': this.nonce // is_user_logged_in() only seems to work properly when the nonce is provided
@@ -1319,7 +1319,7 @@ __webpack_require__.r(__webpack_exports__);
       this.isLoading = true;
       let startLoadingTime = new Date();
 
-      let response = await fetch('http://localhost/kongres-poc/api/');
+      let response = await fetch(customVars.baseUrl + '/api/');
       let data = await response.json();
       this.arrangements_CustomAPI_fetch = data;
 
@@ -1332,7 +1332,7 @@ __webpack_require__.r(__webpack_exports__);
       this.isLoading2 = true;
       let startLoadingTime = new Date();
 
-      let response = await fetch('http://localhost/kongres-poc/wp-json/wp/v2/arrangement');
+      let response = await fetch(customVars.baseUrl + '/wp-json/wp/v2/arrangement');
       let data = await response.json();
       this.arrangements_WPAPI_fetch = data;
 
@@ -1349,11 +1349,11 @@ __webpack_require__.r(__webpack_exports__);
         arrangement_start_date: Math.floor(Date.now() / 1000),
       };
 
-      let response = await fetch('http://localhost/kongres-poc/wp-json/wp/v2/arrangement', {
+      let response = await fetch(customVars.baseUrl + '/wp-json/wp/v2/arrangement', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-WP-Nonce': this.newNonce
+          'X-WP-Nonce': this.nonce
         },
         body: JSON.stringify(attributes) // body data type must match "Content-Type" header
       });
@@ -1436,7 +1436,7 @@ __webpack_require__.r(__webpack_exports__);
     loginTest: async function () {
       // let d = {"user_login": "admin", "user_password": "admin"};
       let d = {"user_login": "holder100", "user_password": "Holder100"};
-      let response = await fetch('http://localhost/kongres-poc/wp-json/custom/login', {
+      let response = await fetch(customVars.baseUrl + '/wp-json/custom/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -1452,7 +1452,7 @@ __webpack_require__.r(__webpack_exports__);
       // console.log("new nonce", wpApiSettings['nonce']);
     },
     logoutTest: async function () {
-      let response = await fetch('http://localhost/kongres-poc/wp-json/custom/logout');
+      let response = await fetch(customVars.baseUrl + '/wp-json/custom/logout');
       let data = await response.text();
       console.log(data);
 
@@ -1461,7 +1461,7 @@ __webpack_require__.r(__webpack_exports__);
         window.location.replace(location.pathname); // The page must be refreshed to update the nonce in wp-api.js
     },
     isLoggedInTest: async function () {
-      let response = await fetch('http://localhost/kongres-poc/wp-json/custom/isloggedin', {
+      let response = await fetch(customVars.baseUrl + '/wp-json/custom/isloggedin', {
         method: 'GET',
         headers: {
           'X-WP-Nonce': this.nonce
@@ -1474,7 +1474,7 @@ __webpack_require__.r(__webpack_exports__);
       // wpApiSettings['nonce'] = this.nonce;
       // wpApiSettings['nonce'] = "asd";
 
-      let response = await fetch('http://localhost/kongres-poc/wp-json/custom/getnonce');
+      let response = await fetch(customVars.baseUrl + '/wp-json/custom/getnonce');
       let data = await response.text();
       console.log("setNonce", data);
       this.newNonce = data;
@@ -1785,7 +1785,7 @@ var render = function() {
         _vm._v("Create arrangement (fetch)")
       ]),
       _vm._v(" "),
-      _c("p", [_vm._v("Reponse: " + _vm._s(_vm.getCreationResponse))]),
+      _c("p", [_vm._v("Reponse: " + _vm._s(_vm.creationResponseOld))]),
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
@@ -18394,7 +18394,8 @@ const routes = [
 ];
 
 const router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-    routes
+    mode: 'hash',
+    routes: routes
 });
 
 // let isUserLoggedInPromise = getIsUserLoggedIn();
