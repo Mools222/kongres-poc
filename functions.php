@@ -186,3 +186,11 @@ function hide_admin_bar($show) {
         return false;
     return $show;
 }
+
+/**
+ * Cron (wp_schedule_single_event)
+ */
+add_action('my_new_event', 'do_this_cron');
+function do_this_cron($text) {
+    update_field('arrangement_name', $text, 32);
+}
