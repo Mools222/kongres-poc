@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import '../assets/js/swScript.js';
+// import '../assets/js/swScript.js';
 import router from "./router.js";
 import store from "./store.js";
 

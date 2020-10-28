@@ -86,56 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "../assets/js/swScript.js":
-/*!********************************!*\
-  !*** ../assets/js/swScript.js ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function (event) {
-        registerServiceWorker();
-        setupBeforeInstallPrompt();
-    });
-} else {
-    console.log("No serviceWorker in navigator")
-}
-
-async function registerServiceWorker() {
-    try {
-        let serviceWorkerRegistration = await navigator.serviceWorker.register(
-            customVars['basePath'] + 'sw.js',
-            // {scope: customVars['basePath'] + 'vue'}
-            );
-        console.log('Service worker registered.');
-        console.log("Scope", serviceWorkerRegistration.scope);
-
-        navigator.serviceWorker.addEventListener('message', function (event) {
-            const message = event.data;
-            console.log("message", message);
-            // document.getElementById('swMessage').innerText = message;
-        });
-    } catch (e) {
-        console.log('Service worker registration failed.', e);
-    }
-}
-
-function setupBeforeInstallPrompt() {
-    window.addEventListener("beforeinstallprompt", function (event) {
-        console.log("beforeinstallprompt fired", event);
-
-        // event.preventDefault(); // Prevent Chrome 67 and earlier from automatically showing the prompt
-        // beforeInstallPromptEvent = event; // Stash the event so it can be triggered later.
-        // beforeInstallPromptEventFired = true;
-        //
-        // if (location.pathname === '/')
-        //     displayInstallationIcon(); // Update UI notify the user they can install the PWA
-    });
-}
-
-/***/ }),
-
 /***/ "./App.vue":
 /*!*****************!*\
   !*** ./App.vue ***!
@@ -412,6 +362,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./SpeedTestAPI.vue":
+/*!**************************!*\
+  !*** ./SpeedTestAPI.vue ***!
+  \**************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SpeedTestAPI_vue_vue_type_template_id_07aabfe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SpeedTestAPI.vue?vue&type=template&id=07aabfe2&scoped=true& */ "./SpeedTestAPI.vue?vue&type=template&id=07aabfe2&scoped=true&");
+/* harmony import */ var _SpeedTestAPI_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SpeedTestAPI.vue?vue&type=script&lang=js& */ "./SpeedTestAPI.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SpeedTestAPI_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SpeedTestAPI_vue_vue_type_template_id_07aabfe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SpeedTestAPI_vue_vue_type_template_id_07aabfe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "07aabfe2",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "SpeedTestAPI.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./SpeedTestAPI.vue?vue&type=script&lang=js&":
+/*!***************************************************!*\
+  !*** ./SpeedTestAPI.vue?vue&type=script&lang=js& ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_index_js_vue_loader_options_SpeedTestAPI_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/vue-loader/lib??vue-loader-options!./SpeedTestAPI.vue?vue&type=script&lang=js& */ "./node_modules/vue-loader/lib/index.js?!./SpeedTestAPI.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_vue_loader_lib_index_js_vue_loader_options_SpeedTestAPI_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./SpeedTestAPI.vue?vue&type=template&id=07aabfe2&scoped=true&":
+/*!*********************************************************************!*\
+  !*** ./SpeedTestAPI.vue?vue&type=template&id=07aabfe2&scoped=true& ***!
+  \*********************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SpeedTestAPI_vue_vue_type_template_id_07aabfe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./SpeedTestAPI.vue?vue&type=template&id=07aabfe2&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./SpeedTestAPI.vue?vue&type=template&id=07aabfe2&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SpeedTestAPI_vue_vue_type_template_id_07aabfe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SpeedTestAPI_vue_vue_type_template_id_07aabfe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./Tester.vue":
 /*!********************!*\
   !*** ./Tester.vue ***!
@@ -493,20 +512,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue */ "./App.vue");
-/* harmony import */ var _assets_js_swScript_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/js/swScript.js */ "../assets/js/swScript.js");
-/* harmony import */ var _assets_js_swScript_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_assets_js_swScript_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _router_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./router.js */ "./router.js");
-/* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store.js */ "./store.js");
+/* harmony import */ var _router_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router.js */ "./router.js");
+/* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store.js */ "./store.js");
 
 
-
+// import '../assets/js/swScript.js';
 
 
 
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     render: h => h(_App_vue__WEBPACK_IMPORTED_MODULE_1__["default"]),
-    router: _router_js__WEBPACK_IMPORTED_MODULE_3__["default"],
-    store: _store_js__WEBPACK_IMPORTED_MODULE_4__["default"]
+    router: _router_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+    store: _store_js__WEBPACK_IMPORTED_MODULE_3__["default"]
 }).$mount('#vue-div')
 
 /***/ }),
@@ -988,8 +1005,6 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Tester_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tester.vue */ "./Tester.vue");
-/* harmony import */ var _Login_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Login.vue */ "./Login.vue");
 //
 //
 //
@@ -1006,16 +1021,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
-// let test = require('../../../../wp-includes/js/wp-api');
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
-  components: {
-    tester: _Tester_vue__WEBPACK_IMPORTED_MODULE_0__["default"], login: _Login_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
-  },
   data() {
     return {
       // The wpApiSettings object comes from calling "wp_enqueue_script('wp-api');" in functions. (https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/)
@@ -1159,6 +1169,71 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/index.js?!./SpeedTestAPI.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib??vue-loader-options!./SpeedTestAPI.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "SpeedTestAPI",
+    data() {
+        return {
+            loadingTimesInSeconds: [],
+        }
+    },
+    mounted() {
+        console.log(customVars.baseUrl + '/wp-json/wp/v2/arrangement')
+    },
+    methods: {
+        fetchArrangementsFromWordPressAPI: async function () {
+            let startLoadingTime = Date.now();
+
+            let response = await fetch(customVars.baseUrl + '/wp-json/wp/v2/event');
+            let data = await response.json();
+
+            // console.log(data);
+
+            let endLoadingTime = Date.now();
+
+            let loadingTimeInSeconds = (endLoadingTime - startLoadingTime) / 1000;
+
+            this.loadingTimesInSeconds.push(loadingTimeInSeconds);
+        },
+        testSpeed: async function () {
+            this.loadingTimesInSeconds = [];
+
+            let iterations = 100;
+            console.log("iterations", iterations);
+
+            for (let i = 0; i < iterations; i++) {
+                await this.fetchArrangementsFromWordPressAPI();
+            }
+
+            let totalLoadingTimeInSeconds = 0;
+            for (let seconds of this.loadingTimesInSeconds) {
+                totalLoadingTimeInSeconds += seconds;
+            }
+            let averageLoadingTimeInSeconds = totalLoadingTimeInSeconds / iterations;
+            console.log("averageLoadingTimeInSeconds", averageLoadingTimeInSeconds);
+        }
+    }
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/index.js?!./Tester.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib??vue-loader-options!./Tester.vue?vue&type=script&lang=js& ***!
@@ -1248,276 +1323,277 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Tester",
-  props: ['nonce', 'isLoggedIn'],
-  // beforeRouteEnter (to, from, next) {
-  //   next(vm => {
-  //     console.log("Tester", "beforeRouteEnter", vm.isLoggedIn)
-  //     if (vm.isLoggedIn)
-  //       next();
-  //   })
-  // },
-  data() {
-    return {
-      time1: '',
-      time2: '',
-      arrangements_CustomAPI_fetch: [],
-      isLoading: false,
-      timeToLoad: '',
-      arrangements_WPAPI_fetch: [],
-      isLoading2: false,
-      timeToLoad2: '',
-      creationResponseOld: null,
-      creationResponse: null,
-      timeToLoad3: '',
-      arrangements_WPAPI_backbone: [],
-      newNonce: ""
-    }
-  },
-  mounted: async function () {
-    await this.loadClient();
-    this.fetchArrangementsFromCustomAPI(); // Reads from custom API with fetch
-    this.fetchArrangementsFromWordPressAPI(); // Reads from WP API with fetch
-    this.readArrangementsAsync(); // Reads from WP API with backbone.js
-
-    this.calculateNow();
-  },
-  computed: {
-    getCreationResponse: function () {
-      if (this.creationResponse !== null)
-        return this.creationResponse.message;
-      else
-        return "N/A";
-    }
-  },
-  methods: {
-    /**
-     * Client startup is asynchronous. If the api schema is localized, the client can start immediately; if not the
-     * client makes an ajax request to load the schema. The client exposes a load promise for provide a reliable wait
-     * to wait for client to be ready: [wp.api.loadPromise]
-     *
-     * What happens is this:
-     * wp-api.min.js sends (through backbone.min.js & jquery.js) a GET request to http://localhost/kongres-poc/wp-json/wp/v2/
-     * This returns a list of all routes. These are then used to create the api scheme (i.e. wp.api.models & wp.api.collections)
-     * The promise in wp.api.loadPromise resolves when this is done
-     */
-    loadClient: async function () {
-      console.log("loadClient");
-      let endpoint = await wp.api.loadPromise; // wp.api.loadPromise calls wp.api.init() in "wp-api.js". The wp.api.init function returns a promise that will resolve with the endpoint once it is ready.
-      // console.log(endpoint);
+    name: "Tester",
+    props: ['nonce', 'isLoggedIn'],
+    // beforeRouteEnter (to, from, next) {
+    //   next(vm => {
+    //     console.log("Tester", "beforeRouteEnter", vm.isLoggedIn)
+    //     if (vm.isLoggedIn)
+    //       next();
+    //   })
+    // },
+    data() {
+        return {
+            time1: '',
+            time2: '',
+            arrangements_CustomAPI_fetch: [],
+            isLoading: false,
+            timeToLoad: '',
+            arrangements_WPAPI_fetch: [],
+            isLoading2: false,
+            timeToLoad2: '',
+            creationResponseOld: null,
+            creationResponse: null,
+            timeToLoad3: '',
+            arrangements_WPAPI_backbone: [],
+            newNonce: ""
+        }
     },
-    calculateNow: function () {
-      let date = new Date();
-      let dateString1 = date.toUTCString();
-      let dateString2 = date.toLocaleString();
-      this.time1 = dateString1;
-      this.time2 = dateString2;
+    mounted: async function () {
+        await this.loadClient();
+        this.fetchArrangementsFromCustomAPI(); // Reads from custom API with fetch
+        this.fetchArrangementsFromWordPressAPI(); // Reads from WP API with fetch
+        this.readArrangementsAsync(); // Reads from WP API with backbone.js
+
+        this.calculateNow();
     },
-    fetchArrangementsFromCustomAPI: async function () {
-      this.isLoading = true;
-      let startLoadingTime = new Date();
-
-      let response = await fetch(customVars.baseUrl + '/api/');
-      let data = await response.json();
-      this.arrangements_CustomAPI_fetch = data;
-
-      let endLoadingTime = new Date();
-      this.isLoading = false;
-
-      this.timeToLoad = (endLoadingTime.getTime() - startLoadingTime.getTime()) / 1000;
+    computed: {
+        getCreationResponse: function () {
+            if (this.creationResponse !== null)
+                return this.creationResponse.message;
+            else
+                return "N/A";
+        }
     },
-    fetchArrangementsFromWordPressAPI: async function () {
-      this.isLoading2 = true;
-      let startLoadingTime = new Date();
-
-      let response = await fetch(customVars.baseUrl + '/wp-json/wp/v2/arrangement');
-      let data = await response.json();
-      this.arrangements_WPAPI_fetch = data;
-
-      let endLoadingTime = new Date();
-      this.isLoading2 = false;
-
-      this.timeToLoad2 = (endLoadingTime.getTime() - startLoadingTime.getTime()) / 1000;
-    },
-    createArrangementOld: async function () {
-      let attributes = {
-        title: 'Kongres 44',
-        status: 'publish',
-        arrangement_name: "Kongres D",
-        arrangement_start_date: Math.floor(Date.now() / 1000),
-      };
-
-      let response = await fetch(customVars.baseUrl + '/wp-json/wp/v2/arrangement', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-WP-Nonce': this.nonce
+    methods: {
+        /**
+         * Client startup is asynchronous. If the api schema is localized, the client can start immediately; if not the
+         * client makes an ajax request to load the schema. The client exposes a load promise for provide a reliable wait
+         * to wait for client to be ready: [wp.api.loadPromise]
+         *
+         * What happens is this:
+         * wp-api.min.js sends (through backbone.min.js & jquery.js) a GET request to http://localhost/kongres-poc/wp-json/wp/v2/
+         * This returns a list of all routes. These are then used to create the api scheme (i.e. wp.api.models & wp.api.collections)
+         * The promise in wp.api.loadPromise resolves when this is done
+         */
+        loadClient: async function () {
+            console.log("loadClient");
+            let endpoint = await wp.api.loadPromise; // wp.api.loadPromise calls wp.api.init() in "wp-api.js". The wp.api.init function returns a promise that will resolve with the endpoint once it is ready.
+            // console.log(endpoint);
         },
-        body: JSON.stringify(attributes) // body data type must match "Content-Type" header
-      });
-      let data = await response.json();
-      this.creationResponseOld = data;
-    },
-    createArrangement: function () {
-      // wp.api.loadPromise.done(() => { // Using an arrow function to preserve "this"
-      let attributes = {
-        title: 'Kongres 4',
-        status: 'publish',
-        arrangement_name: "Kongres D",
-        arrangement_start_date: Math.floor(Date.now() / 1000),
-      };
+        calculateNow: function () {
+            let date = new Date();
+            let dateString1 = date.toUTCString();
+            let dateString2 = date.toLocaleString();
+            this.time1 = dateString1;
+            this.time2 = dateString2;
+        },
+        fetchArrangementsFromCustomAPI: async function () {
+            this.isLoading = true;
+            let startLoadingTime = new Date();
 
-      let arrangement = new wp.api.models.Arrangement(attributes);
-      arrangement.save(null, {
-        error: (model, response, options) => { // Using an arrow function again to preserve "this"
-          this.creationResponse = response.responseJSON;
+            let response = await fetch(customVars.baseUrl + '/api/');
+            let data = await response.json();
+            this.arrangements_CustomAPI_fetch = data;
+
+            let endLoadingTime = new Date();
+            this.isLoading = false;
+
+            this.timeToLoad = (endLoadingTime.getTime() - startLoadingTime.getTime()) / 1000;
         },
-        success: (model, response, options) => { // Using an arrow function again to preserve "this"
-          this.creationResponse = {message: options.xhr.statusText};
+        fetchArrangementsFromWordPressAPI: async function () {
+            this.isLoading2 = true;
+            let startLoadingTime = new Date();
+
+            let response = await fetch(customVars.baseUrl + '/wp-json/wp/v2/arrangement');
+            let data = await response.json();
+            this.arrangements_WPAPI_fetch = data;
+
+            let endLoadingTime = new Date();
+            this.isLoading2 = false;
+
+            this.timeToLoad2 = (endLoadingTime.getTime() - startLoadingTime.getTime()) / 1000;
         },
-      });
-      // });
-    },
-    readArrangements: function () {
-      let startLoadingTime = new Date();
-      // wp.api.loadPromise.done(() => {
-      let allArrangements = new wp.api.collections.Arrangement();
-      allArrangements.fetch({
-            error: (model, response, options) => {
-              console.log(response);
-            },
-            success: (model, response, options) => {
-              this.arrangements_WPAPI_backbone = response;
-              let endLoadingTime = new Date();
-              this.timeToLoad3 = (endLoadingTime.getTime() - startLoadingTime.getTime()) / 1000;
+        createArrangementOld: async function () {
+            let attributes = {
+                title: 'Kongres 44',
+                status: 'publish',
+                arrangement_name: "Kongres D",
+                arrangement_start_date: Math.floor(Date.now() / 1000),
+            };
+
+            let response = await fetch(customVars.baseUrl + '/wp-json/wp/v2/arrangement', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-WP-Nonce': this.nonce
+                },
+                body: JSON.stringify(attributes) // body data type must match "Content-Type" header
+            });
+            let data = await response.json();
+            this.creationResponseOld = data;
+        },
+        createArrangement: function () {
+            // wp.api.loadPromise.done(() => { // Using an arrow function to preserve "this"
+            let attributes = {
+                title: 'Kongres 4',
+                status: 'publish',
+                arrangement_name: "Kongres D",
+                arrangement_start_date: Math.floor(Date.now() / 1000),
+            };
+
+            let arrangement = new wp.api.models.Arrangement(attributes);
+            arrangement.save(null, {
+                error: (model, response, options) => { // Using an arrow function again to preserve "this"
+                    this.creationResponse = response.responseJSON;
+                },
+                success: (model, response, options) => { // Using an arrow function again to preserve "this"
+                    this.creationResponse = {message: options.xhr.statusText};
+                },
+            });
+            // });
+        },
+        readArrangements: function () {
+            let startLoadingTime = new Date();
+            // wp.api.loadPromise.done(() => {
+            let allArrangements = new wp.api.collections.Arrangement();
+            allArrangements.fetch({
+                    error: (model, response, options) => {
+                        console.log(response);
+                    },
+                    success: (model, response, options) => {
+                        this.arrangements_WPAPI_backbone = response;
+                        let endLoadingTime = new Date();
+                        this.timeToLoad3 = (endLoadingTime.getTime() - startLoadingTime.getTime()) / 1000;
+                    }
+                }
+            );
+            // });
+        },
+        readArrangementsAsync: function () {
+            let startLoadingTime = new Date();
+            // wp.api.loadPromise.done(() => { // For some reason, this function cannot be async
+            (async () => {
+                let allArrangements = new wp.api.collections.Arrangement();
+                let response = await allArrangements.fetch();
+                this.arrangements_WPAPI_backbone = response;
+
+                let endLoadingTime = new Date();
+                this.timeToLoad3 = (endLoadingTime.getTime() - startLoadingTime.getTime()) / 1000;
+            })();
+            // });
+        },
+        updateArrangement: async function () {
+            try {
+                let arrangement = new wp.api.models.Arrangement({id: 61});
+
+                let attributes = {
+                    arrangement_name: "Kongres " + Math.random(),
+                };
+
+                let res = await arrangement.save(attributes);
+                console.log(res);
+            } catch (e) {
+                console.log(e.responseJSON);
             }
-          }
-      );
-      // });
-    },
-    readArrangementsAsync: function () {
-      let startLoadingTime = new Date();
-      // wp.api.loadPromise.done(() => { // For some reason, this function cannot be async
-      (async () => {
-        let allArrangements = new wp.api.collections.Arrangement();
-        let response = await allArrangements.fetch();
-        this.arrangements_WPAPI_backbone = response;
-
-        let endLoadingTime = new Date();
-        this.timeToLoad3 = (endLoadingTime.getTime() - startLoadingTime.getTime()) / 1000;
-      })();
-      // });
-    },
-    updateArrangement: async function () {
-      try {
-        let arrangement = new wp.api.models.Arrangement({id: 61});
-
-        let attributes = {
-          arrangement_name: "Kongres " + Math.random(),
-        };
-
-        let res = await arrangement.save(attributes);
-        console.log(res);
-      } catch (e) {
-        console.log(e.responseJSON);
-      }
-    },
-    deleteArrangement: async function () {
-      try {
-        let arrangement = new wp.api.models.Arrangement({id: 61});
-        let res = await arrangement.destroy();
-        console.log(res);
-      } catch (e) {
-        console.log(e.responseJSON);
-      }
-    },
-    loginTest: async function () {
-      // let d = {"user_login": "admin", "user_password": "admin"};
-      let d = {"user_login": "holder100", "user_password": "Holder100"};
-      let response = await fetch(customVars.baseUrl + '/wp-json/custom/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(d) // body data type must match "Content-Type" header
-      });
-      let data = await response.text();
-      console.log(data);
-
-      // this.nonce = data;
-      // console.log("old nonce", wpApiSettings['nonce']);
-      // wpApiSettings['nonce'] = data;
-      // console.log("new nonce", wpApiSettings['nonce']);
-    },
-    logoutTest: async function () {
-      let response = await fetch(customVars.baseUrl + '/wp-json/custom/logout');
-      let data = await response.text();
-      console.log(data);
-
-      if (data === "logout success")
-        // window.location.reload(); // The page must be refreshed to update the nonce in wp-api.js
-        window.location.replace(location.pathname); // The page must be refreshed to update the nonce in wp-api.js
-    },
-    isLoggedInTest: async function () {
-      let response = await fetch(customVars.baseUrl + '/wp-json/custom/isloggedin', {
-        method: 'GET',
-        headers: {
-          'X-WP-Nonce': this.nonce
+        deleteArrangement: async function () {
+            try {
+                let arrangement = new wp.api.models.Arrangement({id: 61});
+                let res = await arrangement.destroy();
+                console.log(res);
+            } catch (e) {
+                console.log(e.responseJSON);
+            }
         },
-      });
-      let data = await response.text();
-      console.log(data);
-    },
-    setNonce: async function () {
-      // wpApiSettings['nonce'] = this.nonce;
-      // wpApiSettings['nonce'] = "asd";
+        loginTest: async function () {
+            // let d = {"user_login": "admin", "user_password": "admin"};
+            let d = {"user_login": "holder100", "user_password": "Holder100"};
+            let response = await fetch(customVars.baseUrl + '/wp-json/custom/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(d) // body data type must match "Content-Type" header
+            });
+            let data = await response.text();
+            console.log(data);
 
-      let response = await fetch(customVars.baseUrl + '/wp-json/custom/getnonce');
-      let data = await response.text();
-      console.log("setNonce", data);
-      this.newNonce = data;
-    },
-    backboneTest: async function () {
-      // let t1 = wp;
-      // let t2 = wp.api;
-      // let t3 = wp.api.models;
-      // // let t31 = wp.api.models.Base; // Undefined
-      // let t4 = wp.api.collections;
-      //
-      // console.log(t1);
+            // this.nonce = data;
+            // console.log("old nonce", wpApiSettings['nonce']);
+            // wpApiSettings['nonce'] = data;
+            // console.log("new nonce", wpApiSettings['nonce']);
+        },
+        logoutTest: async function () {
+            let response = await fetch(customVars.baseUrl + '/wp-json/custom/logout');
+            let data = await response.text();
+            console.log(data);
 
-      // var post = new wp.api.models.Post( { id: 1 } );
-      // post.fetch();
-      // post.getCategories().done( function( postCategories ) {
-      //   console.log( postCategories[0].name );
-      // } );
+            if (data === "logout success")
+                // window.location.reload(); // The page must be refreshed to update the nonce in wp-api.js
+                window.location.replace(location.pathname); // The page must be refreshed to update the nonce in wp-api.js
+        },
+        isLoggedInTest: async function () {
+            let response = await fetch(customVars.baseUrl + '/wp-json/custom/isloggedin', {
+                method: 'GET',
+                headers: {
+                    'X-WP-Nonce': this.nonce
+                },
+            });
+            let data = await response.text();
+            console.log(data);
+        },
+        setNonce: async function () {
+            // wpApiSettings['nonce'] = this.nonce;
+            // wpApiSettings['nonce'] = "asd";
 
-      // var post = new wp.api.models.Arrangement({id: 61});
-      // post.fetch();
-      // post.getAuthorUser().done(function (postCategories) {
-      //   console.log(postCategories[0].name);
-      // });
+            let response = await fetch(customVars.baseUrl + '/wp-json/custom/getnonce');
+            let data = await response.text();
+            console.log("setNonce", data);
+            this.newNonce = data;
+        },
+        backboneTest: async function () {
+            // let t1 = wp;
+            // let t2 = wp.api;
+            // let t3 = wp.api.models;
+            // // let t31 = wp.api.models.Base; // Undefined
+            // let t4 = wp.api.collections;
+            //
+            // console.log(t1);
 
-      // let a = new wp.api.models.Arrangement({id: 61});
-      // a.fetch({
-      //   error: (model, response, options) => {
-      //     console.log(response);
-      //   },
-      //   success: (model, response, options) => {
-      //     this.arrangements_WPAPI_backbone = response;
-      //     let endLoadingTime = new Date();
-      //     this.timeToLoad3 = (endLoadingTime.getTime() - startLoadingTime.getTime()) / 1000;
-      //   }
-      // });
-      // let b = a.getCategories().done(function (meta) {
-      //   console.log(meta);
-      // });
-      // console.log(b);
+            // var post = new wp.api.models.Post( { id: 1 } );
+            // post.fetch();
+            // post.getCategories().done( function( postCategories ) {
+            //   console.log( postCategories[0].name );
+            // } );
 
+            // var post = new wp.api.models.Arrangement({id: 61});
+            // post.fetch();
+            // post.getAuthorUser().done(function (postCategories) {
+            //   console.log(postCategories[0].name);
+            // });
+
+            // let a = new wp.api.models.Arrangement({id: 61});
+            // a.fetch({
+            //   error: (model, response, options) => {
+            //     console.log(response);
+            //   },
+            //   success: (model, response, options) => {
+            //     this.arrangements_WPAPI_backbone = response;
+            //     let endLoadingTime = new Date();
+            //     this.timeToLoad3 = (endLoadingTime.getTime() - startLoadingTime.getTime()) / 1000;
+            //   }
+            // });
+            // let b = a.getCategories().done(function (meta) {
+            //   console.log(meta);
+            // });
+            // console.log(b);
+
+        }
     }
-  }
 });
 
 
@@ -1687,6 +1763,34 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./SpeedTestAPI.vue?vue&type=template&id=07aabfe2&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./SpeedTestAPI.vue?vue&type=template&id=07aabfe2&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("h1", [_vm._v("Speed test")]),
+    _vm._v(" "),
+    _c("button", { on: { click: _vm.testSpeed } }, [_vm._v("Test speed")])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./Tester.vue?vue&type=template&id=21421c6d&scoped=true&":
 /*!*********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./Tester.vue?vue&type=template&id=21421c6d&scoped=true& ***!
@@ -1711,6 +1815,8 @@ var render = function() {
       _vm._v(" "),
       _c("router-link", { attrs: { to: "/oversigt" } }, [_vm._v("Oversigt")]),
       _vm._v(" "),
+      _c("router-link", { attrs: { to: "/speed" } }, [_vm._v("Speed")]),
+      _vm._v(" "),
       _c("router-view", { attrs: { isLoggedIn: _vm.isLoggedIn } }),
       _vm._v(" "),
       _c("h1", [_vm._v("Vue works")]),
@@ -1724,18 +1830,18 @@ var render = function() {
       _c("b", [_vm._v("Fetch from custom API using fetch")]),
       _vm._v(" "),
       _vm.isLoading
-        ? _c("div", [_vm._v("\n    Loading...\n  ")])
+        ? _c("div", [_vm._v("\n        Loading...\n    ")])
         : _c(
             "div",
             [
               _vm._l(_vm.arrangements_CustomAPI_fetch, function(arrangement) {
                 return _c("div", [
                   _vm._v(
-                    "\n      ID: " +
+                    "\n            ID: " +
                       _vm._s(arrangement.id) +
                       ". Navn (ACF): " +
                       _vm._s(arrangement.name) +
-                      "\n    "
+                      "\n        "
                   )
                 ])
               }),
@@ -1752,14 +1858,14 @@ var render = function() {
       _c("b", [_vm._v("Fetch from WP API using fetch")]),
       _vm._v(" "),
       _vm.isLoading2
-        ? _c("div", [_vm._v("\n    Loading2...\n  ")])
+        ? _c("div", [_vm._v("\n        Loading2...\n    ")])
         : _c(
             "div",
             [
               _vm._l(_vm.arrangements_WPAPI_fetch, function(arrangement) {
                 return _c("div", [
                   _vm._v(
-                    "\n      ID: " +
+                    "\n            ID: " +
                       _vm._s(arrangement.id) +
                       ". Navn (ACF): " +
                       _vm._s(arrangement.acf.name) +
@@ -1767,7 +1873,7 @@ var render = function() {
                       _vm._s(arrangement.start_date) +
                       ". Title: " +
                       _vm._s(arrangement.title.rendered) +
-                      "\n    "
+                      "\n        "
                   )
                 ])
               }),
@@ -1808,7 +1914,7 @@ var render = function() {
       _vm._l(_vm.arrangements_WPAPI_backbone, function(arrangement) {
         return _c("div", [
           _vm._v(
-            "\n    ID: " +
+            "\n        ID: " +
               _vm._s(arrangement.id) +
               ". Navn (ACF): " +
               _vm._s(arrangement.acf.name) +
@@ -1816,7 +1922,7 @@ var render = function() {
               _vm._s(arrangement.start_date) +
               ". Title: " +
               _vm._s(arrangement.title.rendered) +
-              "\n  "
+              "\n    "
           )
         ])
       }),
@@ -18325,6 +18431,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Overview_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Overview.vue */ "./Overview.vue");
 /* harmony import */ var _Login_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Login.vue */ "./Login.vue");
 /* harmony import */ var _Offline_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Offline.vue */ "./Offline.vue");
+/* harmony import */ var _SpeedTestAPI_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SpeedTestAPI.vue */ "./SpeedTestAPI.vue");
+
 
 
 
@@ -18390,6 +18498,11 @@ const routes = [
         path: '/offline',
         component: _Offline_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
         name: 'Offline'
+    },
+    {
+        path: '/speed',
+        component: _SpeedTestAPI_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+        name: 'Speed'
     },
 ];
 

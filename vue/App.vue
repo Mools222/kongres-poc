@@ -15,15 +15,9 @@
 </template>
 
 <script>
-// let test = require('../../../../wp-includes/js/wp-api');
-import tester from './Tester.vue';
-import login from './Login.vue';
 
 export default {
   name: "App",
-  components: {
-    tester, login
-  },
   data() {
     return {
       // The wpApiSettings object comes from calling "wp_enqueue_script('wp-api');" in functions. (https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/)

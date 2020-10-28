@@ -194,3 +194,12 @@ add_action('my_new_event', 'do_this_cron');
 function do_this_cron($text) {
     update_field('arrangement_name', $text, 32);
 }
+
+
+add_filter('rest_prepare_event', 'add_acf_to_event', 10, 3);
+function add_acf_to_event($response, $post, $request) {
+    $event_id = $post->ID;
+    $fields = get_fields($event_id);
+    $response->data['acf'] = $fields;
+    return $response;
+}

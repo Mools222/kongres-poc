@@ -4,6 +4,7 @@ import Tester from "./Tester.vue";
 import Overview from "./Overview.vue";
 import Login from "./Login.vue";
 import Offline from "./Offline.vue";
+import SpeedTestAPI from "./SpeedTestAPI.vue";
 
 const Foo = {template: '<div>foo</div>'}
 const Bar = {template: '<div>bar</div>'}
@@ -63,6 +64,11 @@ const routes = [
         path: '/offline',
         component: Offline,
         name: 'Offline'
+    },
+    {
+        path: '/speed',
+        component: SpeedTestAPI,
+        name: 'Speed'
     },
 ];
 
